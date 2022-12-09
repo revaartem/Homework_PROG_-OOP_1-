@@ -48,12 +48,12 @@ print(buyer_3)
 
 
 class Order:
-    def __init__(self, new_member, city_of_destination, name, surname):
-        self.name = name
-        self.surname = surname
+    def __init__(self, buyer):
+        self.name = buyer.name
+        self.surname = buyer.surname
         self.total_sum = 0
-        self.new_member = new_member
-        self.city_of_destination = city_of_destination
+        self.new_member = buyer.new_member
+        self.city_of_destination = buyer.city
         self.order_data = str(datetime.now())[:-7]
         self.order_list = {}
 
@@ -69,7 +69,8 @@ class Order:
 
     def __str__(self):
         check_list = '\n'.join(
-            [f'{key}-------{self.order_list[key][0]} PCS * {self.order_list[key][1]}$' for key in self.order_list])
+            [f'{key}-------{self.order_list[key][0]} PCS * {self.order_list[key][1]}$' for key in self.order_list]
+            )
 
         return f'''
        {self.order_data}
@@ -86,17 +87,17 @@ product_3 = Product('Mercedes S-klass', '2015', '1945', 45000, '6499 x 1899 x 15
 print(product_3)
 print(product_2)
 print(product_1)
-order_1 = Order(buyer_1.new_member, buyer_1.city, buyer_1.name, buyer_1.surname)
+order_1 = Order(buyer_1)
 order_1.product_count(product_1.name, 7, product_1.price, buyer_1.new_member)
 order_1.product_count(product_2.name, 13, product_2.price, buyer_1.new_member)
 order_1.product_count(product_3.name, 6, product_3.price, buyer_1.new_member)
 
-order_2 = Order(buyer_2.new_member, buyer_2.city, buyer_2.name, buyer_2.surname)
+order_2 = Order(buyer_2)
 order_2.product_count(product_1.name, 8, product_1.price, buyer_2.new_member)
 order_2.product_count(product_2.name, 14, product_2.price, buyer_2.new_member)
 order_2.product_count(product_3.name, 12, product_3.price, buyer_2.new_member)
 
-order_3 = Order(buyer_3.new_member, buyer_3.city, buyer_3.name, buyer_3.surname)
+order_3 = Order(buyer_3)
 order_3.product_count(product_1.name, 1, product_1.price, buyer_3.new_member)
 order_3.product_count(product_2.name, 19, product_2.price, buyer_3.new_member)
 order_3.product_count(product_3.name, 16, product_3.price, buyer_3.new_member)
