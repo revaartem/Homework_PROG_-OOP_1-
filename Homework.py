@@ -1,6 +1,7 @@
 
 from datetime import datetime
 
+hello
 
 class Product:
     def __init__(self, name, year, weight, price, size, country_code):
